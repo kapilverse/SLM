@@ -42,19 +42,24 @@ and Gradio deployment. Trained on TinyStories using an NVIDIA T4 GPU
 - `evaluate.py` — loss / perplexity evaluation
 - `app.py` — Gradio web app
 
-## How to work through this
+## Build Roadmap
 
-Follow the phased plan (see conversation / project notes) in order:
-Phase 0-3 (foundations) -> Phase 4-8 (data pipeline) -> Phase 9-15
-(attention & Transformer block) -> Phase 16-18 (full model) -> Phase 19-24
-(training on Colab T4) -> Phase 25-26 (generation & evaluation) -> Phase 27
-(Gradio deployment).
+| Stage | Covers | Status |
+|---|---|---|
+| Foundations | PyTorch tensors, autograd, GPU basics | ✅ Done |
+| Data pipeline | Tokenizer, dataset windows, embeddings | ✅ Done |
+| Attention | Causal self-attention, GQA, Transformer block | ✅ Done |
+| Full model | `SmallGPT` assembly, parameter counting | ✅ Done |
+| Training | Colab T4 training, checkpointing | ✅ Done — 30,000 steps on TinyStories |
+| Evaluation | Loss, perplexity, generation samples | ✅ Done |
+| Deployment | Gradio demo on Hugging Face Spaces | ✅ Done |
 
-Each file above has `TODO(you)` comments marking the parts you should
-implement/verify yourself rather than just running as-is. Test each file's
-`if __name__ == "__main__":` block in isolation before moving to the next.
+Each file has `TODO(you)` comments marking the parts worth tracing
+yourself to understand the mechanics. Every file's
+`if __name__ == "__main__":` block can be run standalone as a sanity
+check.
 
-## Quickstart (Phase 19 — overfit a tiny dataset)
+## Quickstart (overfit a tiny dataset)
 
 ```bash
 pip install -r requirements.txt
@@ -65,15 +70,36 @@ This trains on `data/tiny.txt` (4 lines) — training loss should drop close
 to 0, confirming the model can memorize a tiny dataset before you scale up
 to TinyStories.
 
-## Scaling up (Phase 20-21 — TinyStories on Colab T4)
+## Training on TinyStories (Colab T4)
 
-1. Download the TinyStories dataset (e.g. via `datasets` from Hugging Face —
-   only the *data*, not any pretrained model).
-2. Point `train.py`'s `data_path` at the combined text, or adapt
-   `dataset.py`/`train.py` to stream it directly.
-3. Run in Google Colab with a T4 GPU runtime. `train.py` auto-detects CUDA.
-4. Checkpoints save to `checkpoints/` every `checkpoint_interval` steps —
-   resume via `train(resume_from="checkpoints/ckpt_stepXXXX.pt")`.
+1. Download and flatten TinyStories:
+   ```bash
+   python prepare_tinystories.py --output data/tinystories.txt --num-stories 500000
+   ```
+2. Train (auto-detects CUDA):
+   ```python
+   from train import train
+   model, tok = train(data_path="data/tinystories.txt")
+   ```
+3. Checkpoints save every `checkpoint_interval` steps — resume with:
+   ```python
+   train(data_path="data/tinystories.txt", resume_from="checkpoints/ckpt_stepXXXX.pt")
+   ```
+
+## Results
+
+Trained for 30,000 steps on 500K TinyStories, on a single Colab T4 GPU:
+
+| Metric | Random init | Step 30,000 |
+|---|---|---|
+| Validation loss | 10.92 | 2.28 |
+| Validation perplexity | ~54,900 | 9.60 |
+
+Sample generation (`temperature=0.8, top_k=40`):
+
+> *Once upon a time, there was a little girl named Lily. She had a big,
+> soft, fluffy pillow that she loved to sleep safe. One day, Lily's
+> mommy told her to be careful by mistake...*
 
 ## Generating text
 
@@ -81,10 +107,12 @@ to TinyStories.
 python generate.py
 ```
 
-## Deploying
+## Live Demo
 
+Try the trained model directly in your browser:
+**[Nexa on Hugging Face Spaces](https://huggingface.co/spaces/yadavkapil23/nexa-smallgpt-demo)**
+
+To run the Gradio app locally instead:
 ```bash
 python app.py
 ```
-
-Then push to a Hugging Face Space for public deployment.
