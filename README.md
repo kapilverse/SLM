@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 MySmallGPT
+# 🧠 Nexa
 
 ### A GPT-Style Language Model Built From Scratch in PyTorch
 
