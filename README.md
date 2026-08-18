@@ -1,4 +1,4 @@
-# MySmallGPT
+# Nexa
 
 A GPT-style autoregressive language model built from scratch in PyTorch —
 no `AutoModelForCausalLM`, no `GPT2LMHeadModel`, no pretrained Transformer
