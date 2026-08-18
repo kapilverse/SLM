@@ -46,13 +46,13 @@ and Gradio deployment. Trained on TinyStories using an NVIDIA T4 GPU
 
 | Stage | Covers | Status |
 |---|---|---|
-| Foundations | PyTorch tensors, autograd, GPU basics | ✅ Done |
-| Data pipeline | Tokenizer, dataset windows, embeddings | ✅ Done |
-| Attention | Causal self-attention, GQA, Transformer block | ✅ Done |
-| Full model | `SmallGPT` assembly, parameter counting | ✅ Done |
-| Training | Colab T4 training, checkpointing | ✅ Done — 30,000 steps on TinyStories |
-| Evaluation | Loss, perplexity, generation samples | ✅ Done |
-| Deployment | Gradio demo on Hugging Face Spaces | ✅ Done |
+| Foundations | PyTorch tensors, autograd, GPU basics |  Done |
+| Data pipeline | Tokenizer, dataset windows, embeddings |  Done |
+| Attention | Causal self-attention, GQA, Transformer block |  Done |
+| Full model | `SmallGPT` assembly, parameter counting |  Done |
+| Training | Colab T4 training, checkpointing |  Done — 30,000 steps on TinyStories |
+| Evaluation | Loss, perplexity, generation samples |  Done |
+| Deployment | Gradio demo on Hugging Face Spaces |  Done |
 
 Each file has `TODO(you)` comments marking the parts worth tracing
 yourself to understand the mechanics. Every file's
