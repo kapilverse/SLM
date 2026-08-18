@@ -1,4 +1,22 @@
-# MySmallGPT
+<div align="center">
+
+# 🧠 MySmallGPT
+
+### A GPT-Style Language Model Built From Scratch in PyTorch
+
+*No pretrained weights. No `GPT2LMHeadModel`. Every layer hand-written and verified.*
+
+![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.6-EE4C2C?logo=pytorch&logoColor=white)
+![tiktoken](https://img.shields.io/badge/tiktoken-BPE-4B8BBE?logo=openai&logoColor=white)
+![Gradio](https://img.shields.io/badge/Gradio-UI-F97316?logo=gradio&logoColor=white)
+![CUDA](https://img.shields.io/badge/CUDA-T4-76B900?logo=nvidia&logoColor=white)
+![Dataset](https://img.shields.io/badge/Dataset-TinyStories-9146FF)
+![License](https://img.shields.io/badge/License-MIT-informational)
+
+</div>
+
+---
 
 A GPT-style autoregressive language model built from scratch in PyTorch —
 no `AutoModelForCausalLM`, no `GPT2LMHeadModel`, no pretrained Transformer
