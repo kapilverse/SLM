@@ -24,7 +24,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # HF Hub model repo holding the trained checkpoint (see prepare_tinystories.py /
 # train.py for how it was produced). Override via env vars if you fork this.
-HF_MODEL_REPO = os.environ.get("HF_MODEL_REPO", "kapilverse/nexa-smallgpt")
+HF_MODEL_REPO = os.environ.get("HF_MODEL_REPO", "yadavkapil23/nexa-smallgpt")
 HF_MODEL_FILENAME = os.environ.get("HF_MODEL_FILENAME", "ckpt_step30000.pt")
 
 
