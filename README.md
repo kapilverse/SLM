@@ -110,9 +110,8 @@ python generate.py
 ## Live Demo
 
 Try the trained model directly in your browser:
-**[Nexa on Hugging Face Spaces](https://huggingface.co/spaces/yadavkapil23/nexa-smallgpt-demo)**
-
-To run the Gradio app locally instead:
-```bash
-python app.py
-```
+**Live demo (Gradio Space): https://huggingface.co/spaces/yadavkapil23/nexa-smallgpt**
+**Trained model/checkpoint repo: https://huggingface.co/yadavkapil23/nexa-smallgpt**
+**GitHub repo: https://github.com/kapilverse/SLM**
+**Technical report (in the repo): https://github.com/kapilverse/SLM/REPORT.md**
+**TinyStories dataset (if you want to credit it): https://huggingface.co/datasets/roneneldan/TinyStories**
