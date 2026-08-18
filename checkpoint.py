@@ -23,7 +23,10 @@ def save_checkpoint(path: str, model, optimizer, step: int, loss: float, cfg):
 
 
 def load_checkpoint(path: str, model, optimizer=None, map_location=None):
-    ckpt = torch.load(path, map_location=map_location)
+    # weights_only=False: safe here because we only ever load checkpoints
+    # this project wrote itself (they contain a GPTConfig dataclass, which
+    # torch's default weights_only=True mode refuses to unpickle).
+    ckpt = torch.load(path, map_location=map_location, weights_only=False)
     model.load_state_dict(ckpt["model_state_dict"])
     if optimizer is not None and "optimizer_state_dict" in ckpt:
         optimizer.load_state_dict(ckpt["optimizer_state_dict"])
