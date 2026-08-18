@@ -18,7 +18,7 @@
 
 ---
 
-A GPT-style autoregressive language model built from scratch in PyTorch —
+A GPT-style autoregressive language model built from scratch in PyTorch -
 no `AutoModelForCausalLM`, no `GPT2LMHeadModel`, no pretrained Transformer
 implementation. Implements token embeddings, positional embeddings, causal
 self-attention, grouped-query attention (GQA), Transformer decoder blocks,
@@ -28,19 +28,19 @@ and Gradio deployment. Trained on TinyStories using an NVIDIA T4 GPU
 
 ## Project structure
 
-- `config.py` — model + training hyperparameters
-- `tokenizer.py` — GPT-2 BPE tokenizer (tiktoken, encode/decode only)
-- `dataset.py` — text -> token windows -> DataLoader
-- `embeddings.py` — token + positional embeddings
-- `attention.py` — causal self-attention, causal masking, multi-head attention
-- `gqa.py` — grouped-query attention
-- `transformer.py` — feed-forward network, LayerNorm, Transformer decoder block
-- `model.py` — SmallGPT: full model assembly + parameter counting
-- `train.py` — training loop, GPU device handling, checkpointing
-- `checkpoint.py` — save/load model + optimizer state
-- `generate.py` — autoregressive generation with temperature + top-k sampling
-- `evaluate.py` — loss / perplexity evaluation
-- `app.py` — Gradio web app
+- `config.py` - model + training hyperparameters
+- `tokenizer.py` - GPT-2 BPE tokenizer (tiktoken, encode/decode only)
+- `dataset.py` - text -> token windows -> DataLoader
+- `embeddings.py` - token + positional embeddings
+- `attention.py` - causal self-attention, causal masking, multi-head attention
+- `gqa.py` - grouped-query attention
+- `transformer.py` - feed-forward network, LayerNorm, Transformer decoder block
+- `model.py` - SmallGPT: full model assembly + parameter counting
+- `train.py` - training loop, GPU device handling, checkpointing
+- `checkpoint.py` - save/load model + optimizer state
+- `generate.py` - autoregressive generation with temperature + top-k sampling
+- `evaluate.py` - loss / perplexity evaluation
+- `app.py` - Gradio web app
 
 ## Build Roadmap
 
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 python train.py
 ```
 
-This trains on `data/tiny.txt` (4 lines) — training loss should drop close
+This trains on `data/tiny.txt` (4 lines) - training loss should drop close
 to 0, confirming the model can memorize a tiny dataset before you scale up
 to TinyStories.
 
