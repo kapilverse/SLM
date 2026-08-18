@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 Nexa
+#  Nexa
 
 ### A GPT-Style Language Model Built From Scratch in PyTorch
 
