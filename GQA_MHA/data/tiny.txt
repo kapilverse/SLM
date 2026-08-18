@@ -1,0 +1,12 @@
+hello world
+hello there
+how are you
+I like machine learning
+the quick brown fox jumps over the lazy dog
+once upon a time there was a small language model
+it learned to predict the next token given the previous tokens
+training loss should decrease steadily as the model memorizes this text
+hello world
+hello there
+how are you
+I like machine learning
