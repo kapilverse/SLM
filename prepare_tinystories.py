@@ -6,6 +6,7 @@ Run this once (on Colab, with internet + enough disk) before train.py.
 """
 
 import argparse
+import os
 
 from datasets import load_dataset
 
@@ -14,6 +15,8 @@ def prepare(output_path: str, num_stories: int | None = None, split: str = "trai
     ds = load_dataset("roneneldan/TinyStories", split=split)
     if num_stories is not None:
         ds = ds.select(range(min(num_stories, len(ds))))
+
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
 
     print(f"Writing {len(ds)} stories to {output_path} ...")
     with open(output_path, "w", encoding="utf-8") as f:
