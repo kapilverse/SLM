@@ -1,3 +1,14 @@
+---
+title: Nexa SmallGPT
+emoji: 🧠
+colorFrom: indigo
+colorTo: purple
+sdk: gradio
+app_file: app.py
+pinned: false
+license: apache-2.0
+---
+
 <div align="center">
 
 #  Nexa
