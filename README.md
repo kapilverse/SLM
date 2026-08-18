@@ -119,4 +119,6 @@ Try the trained model directly in your browser:
 
 **Technical report (in the repo): https://github.com/kapilverse/SLM/REPORT.md**
 
+**Research Paper: https://zenodo.org/records/22002958**
+
 **TinyStories dataset (if you want to credit it): https://huggingface.co/datasets/roneneldan/TinyStories**
