@@ -111,9 +111,9 @@ python generate.py
 
 Try the trained model directly in your browser:
 
-**Live demo (Gradio Space): https://huggingface.co/spaces/yadavkapil23/nexa-smallgpt**
+**Live demo (Gradio Space): https://huggingface.co/spaces/yadavkapil7155/nexa-smallgpt**
 
-**Trained model/checkpoint repo: https://huggingface.co/yadavkapil23/nexa-smallgpt**
+**Trained model/checkpoint repo: https://huggingface.co/yadavkapil7155/nexa-smallgpt**
 
 **GitHub repo: https://github.com/kapilverse/SLM**
 
