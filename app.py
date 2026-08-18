@@ -11,6 +11,7 @@ import glob
 import os
 
 import gradio as gr
+import spaces
 import torch
 from huggingface_hub import hf_hub_download
 
@@ -19,8 +20,6 @@ from model import SmallGPT
 from tokenizer import Tokenizer
 from checkpoint import load_checkpoint
 from generate import generate
-
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # HF Hub model repo holding the trained checkpoint (see prepare_tinystories.py /
 # train.py for how it was produced). Override via env vars if you fork this.
@@ -45,13 +44,15 @@ def resolve_checkpoint_path() -> str | None:
 
 
 def load_model():
+    # Loaded on CPU at import time -- ZeroGPU only grants GPU access inside
+    # a @spaces.GPU-decorated function call, not at module import.
     cfg = GPTConfig()
-    model = SmallGPT(cfg).to(DEVICE)
+    model = SmallGPT(cfg)
     tok = Tokenizer()
 
     ckpt_path = resolve_checkpoint_path()
     if ckpt_path:
-        load_checkpoint(ckpt_path, model, map_location=DEVICE)
+        load_checkpoint(ckpt_path, model, map_location="cpu")
         print(f"Loaded checkpoint: {ckpt_path}")
     else:
         print("No checkpoint found — using randomly initialized weights.")
@@ -63,15 +64,18 @@ def load_model():
 MODEL, TOKENIZER = load_model()
 
 
+@spaces.GPU
 def run_generate(prompt: str, temperature: float, max_tokens: int):
     if not prompt.strip():
         return ""
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    MODEL.to(device)
     return generate(
         MODEL, TOKENIZER, prompt,
         max_new_tokens=int(max_tokens),
         temperature=float(temperature),
         top_k=40,
-        device=DEVICE,
+        device=device,
     )
 
 
